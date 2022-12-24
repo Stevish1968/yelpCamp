@@ -1,6 +1,6 @@
-if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-} 
+// if(process.env.NODE_ENV !== 'production') {
+//   require('dotenv').config()
+// } 
   
 const express = require("express");
 const path = require("path");
@@ -162,7 +162,7 @@ app.use((err, req, res, next) => {
   if (!err.message) err.message = "Oh No, Something went wrong";
   res.status(statusCode).render("error", { err });
 });
-
+ 
 
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_URL;
