@@ -1,7 +1,7 @@
 if(process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+ 
 } 
-  
+   require('dotenv').config()
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -19,7 +19,7 @@ const helmet = require('helmet')
 const userRoutes = require('./routes/users')
 const campgroundsRoutes = require('./routes/campgrounds')
 const reviewsRoutes = require('./routes/reviews')
-
+const secret = process.env.SECRET || 'secretcode'
 const MongoDBStore = require('connect-mongo')
 // const dbUrl = process.env.DB_URL
 const dbUrl = process.env.DB_URL || 'mongodb://127.0.0.1:27017/yelp-camp';
@@ -46,7 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, 'public')))
 
-const secret = process.env.SECRET || 'secretcode'
+
 
 const store =  MongoDBStore.create({
   mongoUrl: dbUrl,
@@ -167,14 +167,14 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_URL;
 
-// client.connect(err => {
-//   if(err){ console.error(err); return false;}
-//   // connection to mongo is successful, listen for requests
-//   app.listen(PORT, () => {
-//       console.log("listening for requests");
-//   })
-// });
-
-app.listen(3000, () => {
-  console.log("Serving on port 3000");
+client.connect(err => {
+  if(err){ console.error(err); return false;}
+  // connection to mongo is successful, listen for requests
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
 });
+
+// app.listen(3000, () => {
+//   console.log("Serving on port 3000");
+// });

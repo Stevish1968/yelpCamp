@@ -8,11 +8,12 @@
     <% for (let campground of campgrounds) { %>
         <div class="card mb-3">
             <div class="row">
-                <div class="col-md-4">
-                    <% if (campground.images) { console.log(campground.images) %>
-                      <img src="<%= campground.images[0].url %>" class="img-fluid" alt="">
-                    <% } %>
-                   
+                <div class="col-md-4 d-flex justify-content-center align-items-center">
+                    <% if (!campground.images) {%>
+                        <img src="<%= campground.images[0].url %>" class="img-fluid" alt="">
+                      <% }else { %>  
+                        Image coming soon
+                        <% } %>
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
