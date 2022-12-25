@@ -167,14 +167,14 @@ app.use((err, req, res, next) => {
 const port = process.env.PORT || 3000;
 const uri = process.env.DB_URL;
 
-// client.connect(err => {
-//   if(err){ console.error(err); return false;}
-//   // connection to mongo is successful, listen for requests
-//   app.listen(PORT, () => {
-//       console.log("listening for requests");
-//   })
-// });
-
-app.listen(3000, () => {
-  console.log("Serving on port 3000");
+client.connect(err => {
+  if(err){ console.error(err); return false;}
+  // connection to mongo is successful, listen for requests
+  app.listen(PORT, () => {
+      console.log("listening for requests");
+  })
 });
+
+// app.listen(3000, () => {
+//   console.log("Serving on port 3000");
+// });
